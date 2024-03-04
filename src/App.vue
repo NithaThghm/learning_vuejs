@@ -6,9 +6,3 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
-  #app {
-    background-color: aliceblue;
-    border: solid 1px greenyellow;
-  }
-</style>

@@ -18,5 +18,17 @@ import SupportIcon from './icons/IconSupport.vue'
         <RouterLink to="/projects/counter">Counter</RouterLink>
     </template>
     A very simple counter to learn Vue basics.
+    Hands on Glass Ui.
+  </WelcomeItem>
+  <WelcomeItem>
+    <template #icon>
+        <div>
+            <v-icon name="md-stickynote2-round" scale="1.35" />
+        </div>
+    </template>
+    <template #heading>
+        <RouterLink to="/projects/note">Note</RouterLink>
+    </template>
+    A note taking app to learn more about Vue JS.
   </WelcomeItem>
 </template>
