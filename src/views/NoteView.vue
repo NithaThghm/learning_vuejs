@@ -2,34 +2,48 @@
 import { ref, onMounted } from 'vue'
 
 const showModal = ref(false)
-const cardText = ref("Test")
+const cardText = ref("")
 const cardsList = ref([])
+const err = ref("")
 
-const addCard = function () {
-    return cardsList.value.push({
-        text: cardText.value,
-        date: new Date()
-    })
+const getRandomColor = function() {
+  let color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+  return color;
 }
-console.log(cardText.value)
+
+const addCard = function() {
+    if (cardText.value.length < 10) {
+        return err.value = "Text should be more than 10 characters."
+    }
+    
+    cardsList.value.push({
+        text: cardText.value,
+        date: new Date(),
+        color: getRandomColor()
+    })
+
+    showModal.value = false
+    err.value = ""
+}
+
 </script>
 
 <template>
     <main>
-        <div>{{ cardsList }}</div>
         <div id="notes-titles">
             <h1>Notes</h1>
             <button id="notes-add-btn" @click="showModal = true">+</button>
         </div>
         <div id="notes-board">
-            <div id="notes-card">
-                <p></p>
-                <div>Date :</div>
+            <div v-for="card in cardsList" id="notes-card" :style="{backgroundColor: card.color}" >
+                <p>{{ card.text }}</p>
+                <div>Date : {{ card.date.toLocaleDateString('fr-FR') }}</div>
             </div>
         </div>
         <div v-if="showModal" id="overlay">
             <div id="notes-modal">
-                <textarea v-model="cardText" cols="30" rows="10"></textarea>
+                <textarea v-model.trim="cardText" cols="30" rows="10"></textarea>
+                <p v-if="err" style="color: red">{{ err }}</p>
                 <button id="notes-modal-add-btn" @click="addCard">Add card</button>
                 <button id="notes-modal-close-btn" @click="showModal = false">Close</button>
             </div>
@@ -57,7 +71,6 @@ main {
     justify-content: start;
     height: 90%;
     width: 100%;
-    border: solid 1px red;
 }
 #notes-add-btn{
     height: 35px;
@@ -74,7 +87,6 @@ main {
     border-radius: 14px;
     margin: 10px 5px;
     padding: 8px;
-    background-color: aquamarine;
 }
 
 #notes-card p{
@@ -84,6 +96,7 @@ main {
 
 #notes-card div{
     height: 10%;
+    text-align: right;
 }
 #overlay{
     position: absolute;

@@ -7,13 +7,11 @@
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
-  border: solid 1px yellow;
 }
 
 main {
   margin-top: auto;
   margin-bottom: auto;
-  border: solid 1px green;
 }
 
 a,
