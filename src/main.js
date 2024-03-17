@@ -4,9 +4,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { MdCalculate, MdStickynote2Round } from "oh-vue-icons/icons";
+import { MdCalculate, MdStickynote2Round, MdQuiz } from "oh-vue-icons/icons";
 
-addIcons(MdCalculate, MdStickynote2Round);
+addIcons(MdCalculate, MdStickynote2Round, MdQuiz);
 
 const app = createApp(App)
 

@@ -31,4 +31,15 @@ import SupportIcon from './icons/IconSupport.vue'
     </template>
     A note taking app to learn more about Vue JS.
   </WelcomeItem>
+  <WelcomeItem>
+    <template #icon>
+        <div>
+            <v-icon name="md-quiz" scale="1.35" />
+        </div>
+    </template>
+    <template #heading>
+        <RouterLink to="/projects/quiz">Quiz</RouterLink>
+    </template>
+    A small quizz game.
+  </WelcomeItem>
 </template>
